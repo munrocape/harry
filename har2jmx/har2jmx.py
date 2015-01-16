@@ -1,0 +1,50 @@
+"""
+ _                _____ _                
+| |              / __  (_)               
+| |__   __ _ _ __`' / /'_ _ __ ___ __  __
+| '_ \ / _` | '__| / / | | '_ ` _ \\ \/ /
+| | | | (_| | |  ./ /__| | | | | | |>  < 
+|_| |_|\__,_|_|  \_____/ |_| |_| |_/_/\_\\
+                      _/ |
+                     |__/ 
+
+har2jmx converts an HTTP Archive into a JMeter Test Plan.
+View the project at https://github.com/munrocape/har2jmx
+
+Usage:
+ har2jmx (-i <in> | --input <in>) [-o <out> | --output <out>] [-w | --waterfall] [-v | --verbose]
+ har2jmx (-h | --help)
+ har2jmx --version
+
+Arguments:
+ <in>       The path to the HTTP Archive.
+ <out>        The name of the created JMeter Test Plan.
+
+Options:
+ -i  <in>, --input <in>               Filepath of HTTP Application to convert.
+ -o <out>, --output <out>             Filename of created JMeter Test Plan.
+ -w, --waterfall                      Emulate browser parsing of HTML, JS, CSS.
+ -v, --verbose                        Verbosely list Page and Request conversion.
+ -h, --help                           Show this screen.
+ --version                            Show version.
+
+"""
+
+
+from docopt import docopt
+
+
+def verbose_print(message):
+	if arguments['--verbose']:
+		print message
+
+def main():
+		if(arguments['-i'] or arguments['--input']):
+			verbose_print(arguments['<in>'])
+		else:
+			print __doc__
+
+
+if __name__ == '__main__':
+	arguments = docopt(__doc__, version='har2jmx 0.0.1')
+	main()
