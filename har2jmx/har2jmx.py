@@ -34,19 +34,6 @@ Options:
 from docopt import docopt
 
 
-class Test_Plan(object):
-    '''A class that represents a JMeter Test Plan.'''
-    def __init__(self):
-        self.pages = {}
-
-    def add_page(self, page):
-    	'''Add an individual page to the test plan.'''
-        if page.page_ref in self.pages:
-        	self.pages[page.page_ref] += page
-        else:
-        	self.pages[page.page_ref] =[page]
-
-
 def _verbose_print(message):
 	print message
 
