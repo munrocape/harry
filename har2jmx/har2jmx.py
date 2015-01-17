@@ -23,7 +23,7 @@ Arguments:
 Options:
  -i  <in>, --input <in>               Filepath of HTTP Application to convert.
  -o <out>, --output <out>             Filename of created JMeter Test Plan.
- -w, --waterfall                      Emulate browser parsing of HTML, JS, CSS.
+ -w, --waterfall                      UNSUPPORTED. Emulate browser parsing of HTML, JS, CSS.
  -v, --verbose                        Verbosely list Page and Request conversion.
  -h, --help                           Show this screen.
  --version                            Show version.
@@ -34,17 +34,35 @@ Options:
 from docopt import docopt
 
 
-def verbose_print(message):
-	if arguments['--verbose']:
-		print message
+class Test_Plan(object):
+    '''A class that represents a JMeter Test Plan.'''
+    def __init__(self):
+        self.pages = {}
+
+    def add_page(self, page):
+    	'''Add an individual page to the test plan.'''
+        if page.page_ref in self.pages:
+        	self.pages[page.page_ref] += page
+        else:
+        	self.pages[page.page_ref] =[page]
+
+
+def _verbose_print(message):
+	print message
+
 
 def main():
-		if(arguments['-i'] or arguments['--input']):
-			verbose_print(arguments['<in>'])
-		else:
-			print __doc__
+	if(arguments['-i'] or arguments['--input']):
+		input_file = arguments['<in>']
+		verbose_print('INPUT: ' + input_file)
+	else:
+		print __doc__
 
 
 if __name__ == '__main__':
 	arguments = docopt(__doc__, version='har2jmx 0.0.1')
+	if  arguments['--verbose'] or arguments['-v']:
+		verbose_print = _verbose_print
+	else:
+		verbose_print = lambda *x: None
 	main()
