@@ -32,7 +32,7 @@ Options:
 
 
 from docopt import docopt
-
+from harpy.harpy.har import Har
 
 def _verbose_print(message):
 	print message
@@ -41,7 +41,23 @@ def _verbose_print(message):
 def main():
 	if(arguments['-i'] or arguments['--input']):
 		input_file = arguments['<in>']
-		verbose_print('INPUT: ' + input_file)
+		verbose_print('Attempting to convert input file: ' + input_file + '\n')
+		har = None
+		
+		try:
+			har = Har(input_file)
+		except IOError as e: # couldn't find the file
+			print 'ERROR:'
+			print input_file + ' is not a valid file.'
+		except ValueError as e: # is not a JSON file
+			print 'ERROR:'
+			print input_file + ' is not a JSON file.'
+		except KeyError as e: # does not conform to HTTP Archive specifications
+			print 'ERROR:'
+			print input_file + ' does not conform to the HTTP Archive standard.'
+			print 'It is missing the following key: ' + str(e).strip('\'')
+
+
 	else:
 		print __doc__
 
