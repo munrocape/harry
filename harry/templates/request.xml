@@ -1,0 +1,20 @@
+<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="{{ domain }}" enabled="true">
+  {% for argument in arguments %}
+    {{ argument }}
+  {% end for %}
+  <stringProp name="HTTPSampler.domain">{{ domain }}</stringProp>
+  <stringProp name="HTTPSampler.port">{{ port }}</stringProp>
+  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+  <stringProp name="HTTPSampler.protocol">{{ protocol }}</stringProp>
+  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+  <stringProp name="HTTPSampler.path">{{ path }}</stringProp>
+  <stringProp name="HTTPSampler.method">{{ method }}</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+  <boolProp name="HTTPSampler.monitor">false</boolProp>
+  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+</HTTPSamplerProxy>
+<hashTree/>
