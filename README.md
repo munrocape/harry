@@ -1,6 +1,6 @@
-#har2jmx 
+#harry 
 
-har2jmx is a command line utility that will convert a HTTP Archive (har) into a JMeter test plan (jmx)
+harry is a command line utility that will convert a HTTP Archive (har) into a JMeter test plan (jmx)
 
 ###Why?
 HTTP Archives are great for recording all of the requests made on a page. However, a typical webpage will have dozens of such requests. To accurately test the performance of a webpage with JMeter, you would need to manually replicate the requests. 
