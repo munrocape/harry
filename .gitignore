@@ -1,3 +1,4 @@
 
 *.pyc
-har2jmx/test/*
+
+*.jmx

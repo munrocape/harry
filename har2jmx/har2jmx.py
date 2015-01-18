@@ -33,6 +33,7 @@ Options:
 
 from docopt import docopt
 from harpy.harpy.har import Har
+import jinja2 
 
 def _verbose_print(message):
 	print message

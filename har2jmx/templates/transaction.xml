@@ -1,0 +1,9 @@
+<TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="{{ page_name }}" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+</TransactionController>
+<hashTree>
+	{% for r in requests %}
+		{{ r }}
+	{% endfor %}
+</hashTree>
