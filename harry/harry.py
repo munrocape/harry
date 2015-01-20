@@ -40,7 +40,6 @@ def main():
 		input_file = arguments['<in>']
 		verbose_print('Attempting to convert input file: ' + input_file + '\n')
 		har = None
-		
 		try:
 			har = Har(input_file)
 		except IOError as e: # Python couldn't find the file
