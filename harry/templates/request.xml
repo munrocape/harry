@@ -1,4 +1,4 @@
-<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="{{ domain }}" enabled="true">
+<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="{{ url }}" enabled="true">
     {% for argument in arguments %}
       <collectionProp name="Arguments.arguments">
       {{ argument }}

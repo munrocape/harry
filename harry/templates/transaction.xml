@@ -4,6 +4,5 @@
 </TransactionController>
 <hashTree>
 	{% for r in requests %}
-		{{ r }}
-	{% endfor %}
+	{{ r }}{% endfor %}
 </hashTree>
