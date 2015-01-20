@@ -8,7 +8,7 @@ def _verbose_print(message):
 
 def generate_test_plan(har, output='test_plan.jmx'):
 	'''Return a JMeter formatted test plan from a HTTP Archive.'''
-	test_plan_template = env.get_template('base.jmx')
+	test_plan_template = env.get_template('test_plan.xml')
 	formatted_pages = []
 	for p in har.pages:
 		entries = har.entries_by_page_ref(p.id)

@@ -48,7 +48,11 @@
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
-      <hashTree/>
+      <hashTree>
+        {% for page in pages%}
+          {{ page }}
+        {% endfor %}
+      </hashTree>
       <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
