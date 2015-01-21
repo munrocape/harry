@@ -38,21 +38,23 @@ def generate_page(page_ref, entries):
 def generate_entry(entry):
 	'''Given a HAR entry, it returns a JMeter formatted HTTP Request.'''
 	argument_template = env.get_template('argument.xml')
+	post_template = env.get_template('post.xml')
 	entry_template = env.get_template('request.xml')
+	xml_request_template = env.get_template('xmlrequest.xml')
 	formatted_arguments = []
 	for argument in entry.request.query_string:
 		arg_value = argument.value.replace('&', '&amp;')
 		formatted_arguments.append(argument_template.render(argument_name=argument.name, argument_value=arg_value))
 	url_dict = extract_url_information(entry.request.url)
-	
 
-
+	post = []
+	request_end = '<hashTree/>'
 	if entry.request.post_data:
-		arg = argument_template.render(argument_name='', argument_value=entry.request.post_data['text'].replace('&','&amp;').replace('"', '&quot;'))
-		
-		formatted_arguments.append(arg)
-
+		post = [post_template.render(post_text=entry.request.post_data['text'].replace('&','&amp;').replace('"', '&quot;'))]
+		request_end = xml_request_template.render()
 	generated_entry = entry_template.render(arguments=formatted_arguments, \
+											post_data = post, \
+											request_end = request_end, \
 								url = url_dict['url'], \
 								path = url_dict['path'], \
 								domain = url_dict['domain'], \

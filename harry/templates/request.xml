@@ -1,4 +1,7 @@
 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="{{ url }}" enabled="true">
+    {% for post in post_data %}
+      {{ post }}
+    {% endfor %}
     {% for argument in arguments %}
       <collectionProp name="Arguments.arguments">
         {{ argument }}
@@ -19,4 +22,5 @@
   <boolProp name="HTTPSampler.monitor">false</boolProp>
   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
 </HTTPSamplerProxy>
-<hashTree/>
+{{ request_end }}
+
