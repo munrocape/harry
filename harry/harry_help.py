@@ -14,8 +14,7 @@ def generate_test_plan(har, output='test_plan.jmx'):
 		entries = har.entries_by_page_ref(p.id)
 		formatted_pages.append(generate_page(p.id, entries))
 	generated_test = test_plan_template.render(pages=formatted_pages)
-	generated_test = generated_test.replace('&', '&amp;')
-	#print generated_test
+	#generated_test = generated_test.replace('&', '&amp;')
 	try:
 		output_file = open(output, 'w')
 		output_file.write(generated_test)
@@ -42,8 +41,17 @@ def generate_entry(entry):
 	entry_template = env.get_template('request.xml')
 	formatted_arguments = []
 	for argument in entry.request.query_string:
-		formatted_arguments.append(argument_template.render(argument_name=argument.name, argument_value=argument.value))
+		arg_value = argument.value.replace('&', '&amp;')
+		formatted_arguments.append(argument_template.render(argument_name=argument.name, argument_value=arg_value))
 	url_dict = extract_url_information(entry.request.url)
+	
+
+
+	if entry.request.post_data:
+		arg = argument_template.render(argument_name='', argument_value=entry.request.post_data['text'].replace('&','&amp;').replace('"', '&quot;'))
+		
+		formatted_arguments.append(arg)
+
 	generated_entry = entry_template.render(arguments=formatted_arguments, \
 								url = url_dict['url'], \
 								path = url_dict['path'], \
@@ -56,9 +64,9 @@ def generate_entry(entry):
 
 def extract_url_information(url):
 	'''Return a dictionary containing the protocol, domain, and path of a URL.'''
-	protocol = url[:url.index(':')]
+	protocol = url[:url.index(':')].replace('&', '&amp;')
 	post_protocol = url.index('//')
 	post_domain = url.index('/', post_protocol + 2)
 	domain = url[post_protocol + 2:post_domain]
-	path = url[post_domain:]
-	return {'url':url, 'path':path, 'domain':domain, 'protocol':protocol}
+	path = url[post_domain:].replace('&', '&amp;')
+	return {'url':url.replace('&', '&amp;'), 'path':path, 'domain':domain, 'protocol':protocol}

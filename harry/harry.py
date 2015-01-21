@@ -17,7 +17,7 @@ Usage:
 
 Arguments:
  <in>       The path to the HTTP Archive.
- <out>        The name of the created JMeter Test Plan.
+ <out>      The name of the created JMeter Test Plan.
 
 Options:
  -i  <in>, --input <in>               Filepath of HTTP Application to convert.
@@ -53,13 +53,15 @@ def main():
 			print input_file + ' does not conform to the HTTP Archive standard.'
 			print 'Expected the following key: ' + str(e).strip('\'')
 		if har != None:
-			generate_test_plan(har)
+			output_file = 'test_plan.jmx'
+			generate_test_plan(har, output_file)
 	else:
 		print __doc__
 
 
 if __name__ == '__main__':
 	arguments = docopt(__doc__, version='harry 0.0.1')
+	print arguments
 	if  arguments['--verbose'] or arguments['-v']:
 		verbose_print = _verbose_print
 	else:

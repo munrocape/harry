@@ -1,7 +1,7 @@
 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="{{ url }}" enabled="true">
     {% for argument in arguments %}
       <collectionProp name="Arguments.arguments">
-      {{ argument }}
+        {{ argument }}
       </collectionProp>
     {% else %}<collectionProp name="Arguments.arguments"/>{% endfor %}
   <stringProp name="HTTPSampler.domain">{{ domain }}</stringProp>
