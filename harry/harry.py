@@ -11,21 +11,22 @@ harry converts an HTTP Archive into a JMeter Test Plan.
 View the project at https://github.com/munrocape/harry
 
 Usage:
- harry (-i <in> | --input <in>) [-o <out> | --output <out>] [-w | --waterfall] [-v | --verbose]
- harry (-h | --help)
- harry --version
+  harry (-i <in> | --input <in>) [-o <out> | --output <out>]
+                                 [-w | --waterfall]
+                                 [-v | --verbose]
+  harry (-h | --help)
+  harry --version
 
 Arguments:
- <in>       The path to the HTTP Archive.
- <out>      The name of the created JMeter Test Plan.
+  <in>       The path to the HTTP Archive.
+  <out>      The name of the file that the JMeter script should be written to.
 
 Options:
- -i  <in>, --input <in>               Filepath of HTTP Application to convert.
- -o <out>, --output <out>             Filename of created JMeter Test Plan.
- -w, --waterfall                      UNSUPPORTED. Emulate browser parsing of HTML, JS, CSS.
- -v,  --verbose                       Verbosely list Page and Request conversion.
- -h, --help                           Show this screen.
- --version                            Show version.
+  -o  <out>, --output <out>   Filepath of HTTP Application to convert.
+  -h, --help                  Show this screen.
+  -w, --waterfall             UNSUPPORTED. Mimic browser parsing of CSS/HTML/JS.
+  -v, --verbose               Output the pages and requests that are converted.
+  --version                   Show version.
 
 """
 
@@ -62,8 +63,8 @@ def main():
 if __name__ == '__main__':
 	arguments = docopt(__doc__, version='harry 0.0.1')
 	print arguments
-	if  arguments['--verbose'] or arguments['-v']:
-		verbose_print = _verbose_print
-	else:
-		verbose_print = lambda *x: None
-	main()
+	#if  arguments['--verbose'] or arguments['-v']:
+	#	verbose_print = _verbose_print
+	#else:
+	#	verbose_print = lambda *x: None
+	#main()
