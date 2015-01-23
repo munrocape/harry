@@ -1,4 +1,4 @@
-r""".
+"""
 
  _
 | |__   __ _ _ __ _ __ _   _
@@ -66,7 +66,6 @@ def main():
 
 if __name__ == '__main__':
     ARGUMENTS = docopt(__doc__, version='harry 0.0.1')
-    print ARGUMENTS
     if ARGUMENTS['--verbose'] or ARGUMENTS['-v']:
         VERBOSE_PRINT = _verbose_print
     else:
