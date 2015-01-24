@@ -3,25 +3,28 @@
 from setuptools import setup, find_packages
 
 
-version = '0.0.1'
+version = '0.0.12'
 
 setup(
     name='harry',
     version=version,
     description='harry converts HTTP Archives (.har) into JMeter test plans (.jmx).',
-    long_description=open('README.rst').read(),
     author='Zach Munro-Cape',
     author_email='zach.munrocape@gmail.com',
-    license='MIT',
+    license='apache',
     keywords=['jmeter', 'http archive', 'har2jmx', 'command line', 'cli'],
-    url='http://github.com/munrocape/harry',
+    url='https://github.com/munrocape/harry',
+    download_url='https://github.com/peterldowns/mypackage/tarball/'+version,
     packages=find_packages(),
+    package_data={
+            'harry': ['harpy/harpy/*']
+        },
     install_requires=[
         'docopt>=0.6.1',
     ],
     entry_points={
-        'console_scripts': [
-            'harry=harry.harry:main'
-        ],
-    }
+    'console_scripts': [
+        'harry=harry.harry:main',
+    ],
+}
 )
