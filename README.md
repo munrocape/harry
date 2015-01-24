@@ -2,6 +2,14 @@
 
 harry is a command line utility that will convert a HTTP Archive (har) into a JMeter test plan (jmx)
 
+###Installation Instructions via Pip
+Option 1: Download it as a [tarball.](https://pypi.python.org/pypi/harry/0.0.22)
+
+Option 2: Via pip.
+```
+	$ pip install harry
+```
+
 ###Why?
 
 JMeter is a tool used to test the reponses for a given HTTP request. However, a typical webpage is comprised of dozens of such requests. To accurately test the performance of a webpage with JMeter, you would need to perform a great deal of manual entry.
